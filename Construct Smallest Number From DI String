@@ -1,0 +1,46 @@
+class Solution {
+   static String findminithree(String str){
+       return findminitwo(str);
+    }
+    static String findmini(String str){
+    String finalresult = "";
+    int index = 0;
+    int current = 1;
+    int counter = 0;
+        while (index < str.length()) {
+
+        char character = str.charAt(index);
+        if (index == 0 && character == 'I') {
+            finalresult += current;
+            current++;
+        }
+        if (character == 'D') {
+            counter++;
+        }
+
+        int j = index + 1;
+        while (j < str.length()
+                && str.charAt(j) == 'D') {
+            counter++;
+            j++;
+        }
+
+        int k = counter;
+        while (counter >= 0) {
+            finalresult += (current + counter);
+            counter--;
+        }
+        current += (k + 1);
+        counter = 0;
+        index = j;
+    }
+
+        return finalresult;
+}
+static String findminitwo(String str){
+        return findmini(str);
+}
+        public String smallestNumber(String pattern) {
+        return findminithree(pattern);
+        }
+}
