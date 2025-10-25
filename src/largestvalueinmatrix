@@ -1,0 +1,32 @@
+class Solution {
+    public int[][] largestLocal(int[][] grid) {
+        int n=grid.length;
+        int[][] ans=new int[n-2][n-2];
+          int i1=0;
+        int j1=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                boolean check=true;
+                if(j+3>n || i+3>n){
+                    break;
+                }
+                int maxi=0;
+                for(int k=i,p=0;k<n && p<3;p++,k++){
+                    for(int l=j,q=0;l<n && q<3;q++,l++){
+                        maxi= Math.max(maxi,grid[k][l]);
+                    }
+                }
+               ans[i1][j1]=maxi;
+               j1++;
+                if(j1>=n-2){
+                    j1=0;
+                    i1++;   
+                }  
+            }
+             if(i+3>n ){
+                break;
+            }
+        }
+        return ans;
+    }
+}
